@@ -19,6 +19,7 @@ namespace _Assets._Code.Scripts.Game.Survivors
         float rotationX = 0;
 
         [HideInInspector] public bool canMove = true;
+        [SerializeField] private bool canFly = false;
 
         void Start()
         {
@@ -45,21 +46,39 @@ namespace _Assets._Code.Scripts.Game.Survivors
             float movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-            if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+            if (!canFly)
             {
-                moveDirection.y = jumpSpeed;
+                if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+                {
+                    moveDirection.y = jumpSpeed;
+                }
+                else
+                {
+                    moveDirection.y = movementDirectionY;
+                }
             }
             else
             {
-                moveDirection.y = movementDirectionY;
+                if (Input.GetButton("Jump") && canMove)
+                {
+                    moveDirection.y = jumpSpeed;
+                }
+                else if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    moveDirection.y = -jumpSpeed;
+                }
             }
 
-            // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-            // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-            // as an acceleration (ms^-2)
-            if (!characterController.isGrounded)
+
+            if (!canFly)
             {
-                moveDirection.y -= gravity * Time.deltaTime;
+                // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
+                // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
+                // as an acceleration (ms^-2)
+                if (!characterController.isGrounded)
+                {
+                    moveDirection.y -= gravity * Time.deltaTime;
+                }
             }
 
             // Move the controller
