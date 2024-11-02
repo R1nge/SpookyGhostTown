@@ -18,7 +18,17 @@ namespace _Assets._Code.Scripts.Game
 
         private void OnConnection(ulong clientId)
         {
-            if (_networkManager.IsHost)
+            if (!_networkManager.IsServer)
+            {
+                return;
+            }
+            SpawnPlayersServerRpc(clientId);
+        }
+
+        [Rpc(SendTo.Server)]
+        private void SpawnPlayersServerRpc(ulong clientId)
+        {
+            if (clientId == _networkManager.LocalClientId)
             {
                 SpawnGhost(clientId);
             }
@@ -32,7 +42,7 @@ namespace _Assets._Code.Scripts.Game
         {
             Instantiate(ghostPrefab, transform.position, Quaternion.identity).SpawnWithOwnership(ownerId);
         }
-        
+
         public void SpawnSurvivor(ulong ownerId)
         {
             Instantiate(survivorPrefab, transform.position, Quaternion.identity).SpawnWithOwnership(ownerId);
