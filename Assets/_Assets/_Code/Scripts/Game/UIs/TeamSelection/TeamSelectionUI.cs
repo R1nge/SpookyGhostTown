@@ -4,7 +4,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Assets._Code.Scripts.Game.UIs
+namespace _Assets._Code.Scripts.Game.UIs.TeamSelection
 {
     public class TeamSelectionUI : NetworkBehaviour
     {

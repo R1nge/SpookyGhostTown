@@ -3,7 +3,7 @@ using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace _Assets._Code.Scripts.Game.UIs
+namespace _Assets._Code.Scripts.Game.UIs.TeamSelection
 {
     public class TeamSelectionPlayerUI : NetworkBehaviour
     {
