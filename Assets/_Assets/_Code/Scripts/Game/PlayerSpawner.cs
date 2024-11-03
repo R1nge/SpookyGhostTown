@@ -1,4 +1,5 @@
 ﻿using System;
+using _Assets._Code.Scripts.Lobby;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -8,33 +9,22 @@ namespace _Assets._Code.Scripts.Game
     {
         [SerializeField] private NetworkObject ghostPrefab;
         [SerializeField] private NetworkObject survivorPrefab;
-        private NetworkManager _networkManager;
-
-        private void Start()
-        {
-            _networkManager = NetworkManager.Singleton;
-            _networkManager.OnClientConnectedCallback += OnConnection;
-        }
-
-        private void OnConnection(ulong clientId)
-        {
-            if (!_networkManager.IsServer)
-            {
-                return;
-            }
-            SpawnPlayersServerRpc(clientId);
-        }
 
         [Rpc(SendTo.Server)]
-        private void SpawnPlayersServerRpc(ulong clientId)
+        public void SpawnPlayersServerRpc(ulong clientId, LobbyService.Teams teams)
         {
-            if (clientId == _networkManager.LocalClientId)
+            switch (teams)
             {
-                SpawnGhost(clientId);
-            }
-            else
-            {
-                SpawnSurvivor(clientId);
+                case LobbyService.Teams.None:
+                    break;
+                case LobbyService.Teams.Survivors:
+                    SpawnSurvivor(clientId);
+                    break;
+                case LobbyService.Teams.Ghosts:
+                    SpawnGhost(clientId);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(teams), teams, null);
             }
         }
 
