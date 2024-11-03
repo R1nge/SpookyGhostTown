@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 291356288776810044}
   - component: {fileID: 3810212838277719073}
   - component: {fileID: 4945795987030656601}
+  - component: {fileID: 9031981063757948707}
   m_Layer: 0
   m_Name: Mob
   m_TagString: Untagged
@@ -95,6 +96,21 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &9031981063757948707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004670181900411797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2330aaeabd0c49d394b0191bd9f01b62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  health:
+    m_InternalValue: 100
 --- !u!1 &4183955011286160293
 GameObject:
   m_ObjectHideFlags: 0
