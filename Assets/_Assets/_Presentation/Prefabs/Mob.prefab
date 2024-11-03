@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3810212838277719073}
   - component: {fileID: 4945795987030656601}
   - component: {fileID: 9031981063757948707}
+  - component: {fileID: 1440337531945106701}
   m_Layer: 0
   m_Name: Mob
   m_TagString: Untagged
@@ -111,6 +112,21 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   health:
     m_InternalValue: 100
+--- !u!114 &1440337531945106701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004670181900411797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab2ecd64b1d413dbd674cf72b4ca485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRange: 5
+  damage: 5
+  attackCooldown: 2
 --- !u!1 &4183955011286160293
 GameObject:
   m_ObjectHideFlags: 0
