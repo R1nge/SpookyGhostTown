@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 1661715169384804300}
   - component: {fileID: 4920996655651976917}
   - component: {fileID: 1606827284141138562}
+  - component: {fileID: 8409651051737324155}
   m_Layer: 0
   m_Name: Survivor
   m_TagString: Untagged
@@ -187,7 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2047417792
+  GlobalObjectIdHash: 290728075
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -298,6 +299,21 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   health:
     m_InternalValue: 100
+--- !u!114 &8409651051737324155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3948237283153443919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3328c0aa09054fbbb95c2d45d4542a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  damage: 5
+  camera: {fileID: 6576285380722536215}
 --- !u!1 &6021348698646032020
 GameObject:
   m_ObjectHideFlags: 0
