@@ -6,6 +6,7 @@ namespace _Assets._Code.Scripts.Game.HealthSystem.Survivors
     {
         protected override void TakeDamageProtected(int damage)
         {
+            Health.Value -= damage;
             Debug.Log($"Survivor took damage {damage}"); 
         }
     }

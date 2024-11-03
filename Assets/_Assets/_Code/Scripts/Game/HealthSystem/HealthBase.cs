@@ -7,6 +7,8 @@ namespace _Assets._Code.Scripts.Game.HealthSystem
     {
         [SerializeField] private NetworkVariable<int> health;
 
+        public NetworkVariable<int> Health => health;
+
         public void TakeDamage(int damage) => TakeDamageProtected(damage);
 
         protected abstract void TakeDamageProtected(int damage);
