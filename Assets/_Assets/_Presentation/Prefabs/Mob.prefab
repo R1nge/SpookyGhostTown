@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 291356288776810044}
   - component: {fileID: 3810212838277719073}
   - component: {fileID: 4945795987030656601}
-  - component: {fileID: 9031981063757948707}
   - component: {fileID: 1440337531945106701}
+  - component: {fileID: 10966382941303044}
+  - component: {fileID: 1938555389286754595}
+  - component: {fileID: 6437751234251053625}
   m_Layer: 0
   m_Name: Mob
   m_TagString: Untagged
@@ -97,21 +99,6 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
---- !u!114 &9031981063757948707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2004670181900411797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2330aaeabd0c49d394b0191bd9f01b62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  health:
-    m_InternalValue: 100
 --- !u!114 &1440337531945106701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,9 +111,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab2ecd64b1d413dbd674cf72b4ca485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   attackRange: 5
   damage: 5
   attackCooldown: 2
+--- !u!114 &10966382941303044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004670181900411797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4d2f1dcb60411b9269ed3d4e8e3379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  agent: {fileID: 1938555389286754595}
+  target: {fileID: 0}
+--- !u!195 &1938555389286754595
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004670181900411797}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &6437751234251053625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004670181900411797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2233efaacf41178968e8b77737ea88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  health:
+    m_InternalValue: 100
 --- !u!1 &4183955011286160293
 GameObject:
   m_ObjectHideFlags: 0
