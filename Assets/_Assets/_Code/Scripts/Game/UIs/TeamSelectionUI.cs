@@ -28,18 +28,14 @@ namespace _Assets._Code.Scripts.Game.UIs
         private void OnTeamChanged(ulong clientId)
         {
             _players[clientId].UpdateTeam(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
-            OnTeamChangedClientRpc(clientId, lobbyService.GetTeamServer(clientId));
-        }
-
-        [Rpc(SendTo.Everyone)]
-        private void OnTeamChangedClientRpc(ulong clientId, LobbyService.Teams teams)
-        {
-            _players[clientId].UpdateTeam(clientId.ToString(), teams.ToString());
         }
 
         private void UpdateUI(ulong clientId)
         {
+            if (!IsServer) return;
             var playerUI = Instantiate(teamSelectionPlayerUIPrefab, playerList);
+            playerUI.GetComponent<NetworkObject>().Spawn();
+            playerUI.transform.SetParent(playerList);
             _players.Add(clientId, playerUI);
             playerUI.UpdateTeam(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
         }
