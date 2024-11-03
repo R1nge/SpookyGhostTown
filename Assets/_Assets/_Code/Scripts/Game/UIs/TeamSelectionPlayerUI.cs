@@ -8,7 +8,7 @@ namespace _Assets._Code.Scripts.Game.UIs
     public class TeamSelectionPlayerUI : NetworkBehaviour
     {
         [SerializeField] private TextMeshProUGUI teamText;
-        private readonly NetworkVariable<FixedString64Bytes> _nickname = new();
+        private readonly NetworkVariable<FixedString128Bytes> _nickname = new();
 
         private void Start()
         {
@@ -16,9 +16,9 @@ namespace _Assets._Code.Scripts.Game.UIs
             UpdateUI(_nickname.Value, _nickname.Value);
         }
 
-        public void UpdateTeam(string nick, string team) => _nickname.Value = $"{nick} - {team}";
+        public void UpdateTeam(FixedString128Bytes nick, string team) => _nickname.Value = $"{nick} - {team}";
 
-        private void UpdateUI(FixedString64Bytes _, FixedString64Bytes str) => teamText.text = str.Value;
+        private void UpdateUI(FixedString128Bytes _, FixedString128Bytes str) => teamText.text = str.Value;
 
         public override void OnDestroy()
         {

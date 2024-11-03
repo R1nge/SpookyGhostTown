@@ -25,19 +25,19 @@ namespace _Assets._Code.Scripts.Game.UIs
             changeTeam.onClick.AddListener(ChangeTeam);
         }
 
-        private void OnTeamChanged(ulong clientId)
+        private void OnTeamChanged(LobbyService.LobbyPlayerData lobbyPlayerData)
         {
-            _players[clientId].UpdateTeam(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
+            _players[lobbyPlayerData.ClientId].UpdateTeam(lobbyPlayerData.Name, lobbyPlayerData.Team.ToString());
         }
 
-        private void UpdateUI(ulong clientId)
+        private void UpdateUI(LobbyService.LobbyPlayerData lobbyPlayerData)
         {
             if (!IsServer) return;
             var playerUI = Instantiate(teamSelectionPlayerUIPrefab, playerList);
             playerUI.GetComponent<NetworkObject>().Spawn();
             playerUI.transform.SetParent(playerList);
-            _players.Add(clientId, playerUI);
-            playerUI.UpdateTeam(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
+            _players.Add(lobbyPlayerData.ClientId, playerUI);
+            playerUI.UpdateTeam(lobbyPlayerData.Name, lobbyPlayerData.Team.ToString());
         }
 
         private void HideUI()
