@@ -62,6 +62,8 @@ namespace _Assets._Code.Scripts.Game.UIs
         {
             base.OnDestroy();
             lobbyService.OnGameStarted -= HideUI;
+            lobbyService.OnPlayerConnected -= UpdateUI;
+            lobbyService.OnTeamChanged -= OnTeamChanged;
         }
     }
 }

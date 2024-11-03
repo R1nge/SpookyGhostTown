@@ -11,7 +11,9 @@ namespace _Assets._Code.Scripts.Lobby
     public class LobbyService : NetworkBehaviour
     {
         [SerializeField] private PlayerSpawner playerSpawner;
-        
+
+        public int NumberOfPlayers => _teams.Keys.Count;
+        public int NumberOfSurvivors => _teams.Values.Count(team => team == Teams.Survivors);
         private readonly Dictionary<ulong, Teams> _teams = new();
         public event Action OnGameStarted;
         public event Action<ulong> OnPlayerConnected;
