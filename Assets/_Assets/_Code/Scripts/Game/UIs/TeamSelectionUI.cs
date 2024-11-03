@@ -20,21 +20,28 @@ namespace _Assets._Code.Scripts.Game.UIs
         {
             lobbyService.OnGameStarted += HideUI;
             lobbyService.OnPlayerConnected += UpdateUI;
-            lobbyService.OnTeamChanged += LobbyServiceOnOnTeamChanged;
+            lobbyService.OnTeamChanged += OnTeamChanged;
             start.onClick.AddListener(StartGame);
             changeTeam.onClick.AddListener(ChangeTeam);
         }
 
-        private void LobbyServiceOnOnTeamChanged(ulong clientId)
+        private void OnTeamChanged(ulong clientId)
         {
-            _players[clientId].UpdateUI(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
+            _players[clientId].UpdateTeam(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
+            OnTeamChangedClientRpc(clientId, lobbyService.GetTeamServer(clientId));
+        }
+
+        [Rpc(SendTo.Everyone)]
+        private void OnTeamChangedClientRpc(ulong clientId, LobbyService.Teams teams)
+        {
+            _players[clientId].UpdateTeam(clientId.ToString(), teams.ToString());
         }
 
         private void UpdateUI(ulong clientId)
         {
             var playerUI = Instantiate(teamSelectionPlayerUIPrefab, playerList);
             _players.Add(clientId, playerUI);
-            playerUI.UpdateUI(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
+            playerUI.UpdateTeam(clientId.ToString(), lobbyService.GetTeamServer(clientId).ToString());
         }
 
         private void HideUI()

@@ -6,8 +6,8 @@ namespace _Assets._Code.Scripts.Game.UIs
     public class TeamSelectionPlayerUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI teamText;
-
-        public void UpdateUI(string nick, string team)
+        
+        public void UpdateTeam(string nick, string team)
         {
             teamText.text = $"{nick} - {team}";
         }
